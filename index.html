@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>MY PORTFOLIO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"data-aos="zoom-in"data-aos-duration="1000">
+                <span><i>SAIRAM NAMANI</i></span>
+            </div>
+            <div class="links">
+                <div class="link"data-aos="fade-up"data-aos-duration="1000"data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link"data-aos="fade-up"data-aos-duration="1000"data-aos-delay="200"> <a href="About.html" >About</a></div>
+                <div class="link"data-aos="fade-up"data-aos-duration="1000"data-aos-delay="300"> <a href="Skills.html" >Skills</a></div>
+                <div class="link contact-btn"data-aos="fade-up"data-aos-duration="1000"data-aos-delay="500"><a href="contact.html" target="_blank">Contact Us</a></div>
+                <a href="tel:8897613480" target="_blank">
+                    <i class="fa-solid fa-phone"></i>
+                </a>                
+            </div>
+            <i class="fa-solid fa-bars hamburg"onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+               <a href="index.html" target="_blank">Home</a>
+               <a href="About.html"target="_blank">About</a>
+               <a href="Skills.html" target="_blank">Skills</a>
+               <a href="contact.html" target="_blank">Contact Us</a>
+               <i class="fa-solid fa-xmark cancel"onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+        <section>
+            <div class="main-container">
+                <div class="image"data-aos="zoom-in-right"data-aos-duration="2500">
+                    <img src="main.png" alt="">
+                </div>
+                <div class="content">
+                    <h1 data-aos="fade-left"data-aos-duration="1000"data-aos-delay="800">Hey I'm<span> Sairam Namani</span></h1>
+                    <div class="typewriter"data-aos="fade-right"data-aos-duration="1000"data-aos-delay="900"> I'm a <span></span></div>
+                    <p data-aos="flip-up"data-aos-duration="1000"data-aos-delay="1000">with a Master’s degree in Computer Applications (MCA). With a passion for both development and design, I specialize in building functional, user-friendly applications while creating visually appealing designs. My technical expertise spans across various development technologies, and I continuously strive to push the boundaries of creativity and functionality</p>
+                    <div class="social-links" data-aos="flip-down"data-aos-duration="1000"data-aos-delay="1200">
+                        <a href="https://wa.me/+918897613480" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sairam.namani.5?mibextid=JRoKGi" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/sairam-namani-3a33ab238?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://x.com/namani_sairam?t=xequRskYE0ZOAkHCQ3ZAJw&s=08"target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                    <div class="btn" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="1300">
+                        <a href="Sairam_Namani_CV.pdf" download>
+                            <button>Download CV</button>
+                        </a>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init({offset:0});
+        </script>
+        <script>
+            function hamburg(){
+                const navbar=document.querySelector(".dropdown")
+                navbar.style.transform="translateY(0px)"
+            }
+            function cancel(){
+                const navbar=document.querySelector(".dropdown")
+                navbar.style.transform="translateY(-500px)"
+            }
+        </script>
+</body>
+</html>
