@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise | Sairam Namani</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #4CAF50;
+            --accent: #00ff88;
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav { text-align: center; }
+        nav a {
+            color: #aaa; text-decoration: none; margin: 0 20px;
+            font-weight: 500; transition: 0.4s; text-transform: uppercase; letter-spacing: 1px;
+        }
+        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        .container { max-width: 1200px; margin: 60px auto; padding: 0 25px; }
+
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h1 { 
+            font-size: 3rem; margin: 0; 
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-header p { color: #888; font-size: 1.1rem; }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            cursor: default;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(45deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(76, 175, 80, 0.1);
+        }
+
+        .skill-card:hover::before { opacity: 1; }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.3));
+        }
+
+        .skill-info h3 { font-size: 1.5rem; margin: 10px 0; letter-spacing: 1px; }
+        .skill-info p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
+
+        /* Professional Level Bar */
+        .level-wrapper { margin-top: 25px; }
+        .level-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; color: var(--primary); font-weight: bold; }
+        
+        .progress-bg { background: rgba(255,255,255,0.05); height: 6px; border-radius: 10px; overflow: hidden; }
+        .progress-fill { 
+            height: 100%; width: 0; 
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: 2.5s cubic-bezier(0.17, 0.85, 0.43, 1);
+        }
+
+        /* Trigger animations */
+        .aos-animate .fill-python { width: 85%; }
+        .aos-animate .fill-db { width: 92%; }
+        .aos-animate .fill-web { width: 80%; }
+        .aos-animate .fill-linux { width: 70%; }
+
+        /* Soft Skills Section */
+        .soft-skills-container {
+            margin-top: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .soft-tag {
+            background: rgba(255,255,255,0.05);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+        .soft-tag:hover {
+            background: var(--primary);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .soft-tag i { font-size: 1.2rem; }
+
+        @media (max-width: 768px) {
+            .section-header h1 { font-size: 2.2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="section-header" data-aos="fade-up">
+        <h1>Technical Mastery</h1>
+        <p>Specialized in building robust database architectures and industrial automation logic.</p>
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-brands fa-python skill-icon"></i>
+            <div class="skill-info">
+                <h3>Python Development</h3>
+                <p>Developing scalable backend logic, SCADA integration scripts, and automated data processing workflows.</p>
+                <div class="level-wrapper">
+                    <div class="level-text"><span>PROFICIENCY</span> <span>85%</span></div>
+                    <div class="progress-bg"><div class="progress-fill fill-python"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-solid fa-database skill-icon"></i>
+            <div class="skill-info">
+                <h3>PostgreSQL / SQL</h3>
+                <p>Expert-level schema design, complex JOIN optimizations, and managing high-concurrency industrial databases.</p>
+                <div class="level-wrapper">
+                    <div class="level-text"><span>PROFICIENCY</span> <span>92%</span></div>
+                    <div class="progress-bg"><div class="progress-fill fill-db"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fa-solid fa-code skill-icon"></i>
+            <div class="skill-info">
+                <h3>Web Technologies</h3>
+                <p>Crafting responsive industrial dashboards using HTML5, CSS3, and JavaScript for real-time SCADA visualization.</p>
+                <div class="level-wrapper">
+                    <div class="level-text"><span>PROFICIENCY</span> <span>80%</span></div>
+                    <div class="progress-bg"><div class="progress-fill fill-web"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fa-brands fa-linux skill-icon"></i>
+            <div class="skill-info">
+                <h3>Linux Systems</h3>
+                <p>Proficient in CLI, server environment setup, and managing deployments on Linux-based industrial controllers.</p>
+                <div class="level-wrapper">
+                    <div class="level-text"><span>PROFICIENCY</span> <span>70%</span></div>
+                    <div class="progress-bg"><div class="progress-fill fill-linux"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 100px;" data-aos="fade-up">
+        <h1>Professional Strengths</h1>
+    </div>
+
+    <div class="soft-skills-container">
+        <div class="soft-tag" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fa-solid fa-users-gear"></i> Team Collaboration
+        </div>
+        <div class="soft-tag" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fa-solid fa-microchip"></i> SCADA Security
+        </div>
+        <div class="soft-tag" data-aos="zoom-in" data-aos-delay="300">
+            <i class="fa-solid fa-brain"></i> Problem Solving
+        </div>
+        <div class="soft-tag" data-aos="zoom-in" data-aos-delay="400">
+            <i class="fa-solid fa-bolt"></i> Continuous Learning
+        </div>
+        <div class="soft-tag" data-aos="zoom-in" data-aos-delay="500">
+            <i class="fa-solid fa-shield-halved"></i> Data Ethics
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+
+    // Optional: Add a subtle mouse parallax effect to cards
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            let rect = card.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
+
+</body>
+</html>

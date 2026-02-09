@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sairam Namani | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #4CAF50;
+            --accent: #00ff88;
+            --bg: #030303;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background & Glow */
+        #canvas-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .cursor-glow {
+            position: fixed; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.12) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 0;
+        }
+
+        /* Navigation - Corrected Name */
+        nav {
+            width: 100%; height: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1200px; width: 100%;
+            margin: 0 auto; padding: 0 30px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; color: var(--primary); }
+        .logo span { color: #fff; }
+
+        .links a { color: #ccc; text-decoration: none; margin-left: 30px; font-weight: 500; font-size: 0.9rem; transition: 0.4s; text-transform: uppercase; }
+        .links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        section {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 100px 30px 50px;
+        }
+
+        .hero-wrapper {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1100px; width: 100%; gap: 50px;
+        }
+
+        /* Image Styling */
+        .img-box { position: relative; width: 400px; height: 400px; flex-shrink: 0; }
+        .blob {
+            position: absolute; width: 100%; height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s linear infinite alternate;
+            box-shadow: 0 0 50px rgba(76, 175, 80, 0.3);
+        }
+        .img-box img {
+            position: relative; width: 94%; height: 94%; left: 3%; top: 3%;
+            object-fit: cover; border-radius: inherit; animation: morph 8s linear infinite alternate;
+            z-index: 2; border: 4px solid rgba(255,255,255,0.1);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        /* Content - Fresh & Simple */
+        .hero-content { flex: 1; z-index: 5; }
+        .greeting { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 10px; display: block; }
+        .hero-content h1 { font-size: 3.8rem; line-height: 1.2; margin-bottom: 15px; font-weight: 700; }
+        .hero-content h1 span { color: var(--primary); }
+        
+        .hero-content p { font-size: 1.05rem; color: #aaa; line-height: 1.7; margin-bottom: 30px; }
+
+        /* Quick Info Grid for Freshers */
+        .quick-info {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px;
+        }
+        .info-pill {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 12px 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px;
+            font-size: 0.9rem; transition: 0.3s;
+        }
+        .info-pill:hover { border-color: var(--primary); transform: translateX(5px); }
+        .info-pill i { color: var(--primary); }
+
+        .socials { display: flex; gap: 15px; margin-bottom: 40px; }
+        .socials a {
+            width: 45px; height: 45px; background: var(--glass); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center; border-radius: 10px;
+            color: #fff; font-size: 1.2rem; transition: 0.3s;
+        }
+        .socials a:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        .btn-row { display: flex; gap: 20px; align-items: center; }
+        .main-btn {
+            padding: 15px 35px; background: var(--primary); color: #000;
+            text-decoration: none; font-weight: 700; border-radius: 8px;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+        }
+        .main-btn:hover { background: var(--accent); transform: scale(1.05); }
+
+        @media (max-width: 992px) {
+            .hero-wrapper { flex-direction: column; text-align: center; }
+            .img-box { width: 300px; height: 300px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .quick-info { grid-template-columns: 1fr; }
+            .socials, .btn-row { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+    <div class="cursor-glow" id="glow"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SAIRAM <span>NAMANI</span></div>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="About.html">About</a>
+                <a href="Skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <span class="greeting" data-aos="fade-down">Hello, I am</span>
+                <h1 data-aos="fade-right" data-aos-delay="200">Sairam <span>Namani</span></h1>
+                <p data-aos="fade-up" data-aos-delay="400">
+                    An enthusiastic <strong>MCA Graduate</strong> and aspiring Software Developer. 
+                    I enjoy solving problems through code and have a strong foundation in 
+                    <strong>Python, Databases, and Web Technologies</strong>.
+                </p>
+
+                <div class="quick-info" data-aos="fade-up" data-aos-delay="500">
+                    <div class="info-pill"><i class="fa-solid fa-graduation-cap"></i> MCA Graduate (2025)</div>
+                    <div class="info-pill"><i class="fa-solid fa-laptop-code"></i> Python & SQL Specialist</div>
+                    <div class="info-pill"><i class="fa-solid fa-briefcase"></i> SCADA System Intern</div>
+                    <div class="info-pill"><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
+                </div>
+
+                <div class="socials" data-aos="fade-up" data-aos-delay="600">
+                    <a href="https://github.com/namanisai117" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sairam-namani" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/+918897613480" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://x.com/namani_sairam" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+
+                <div class="btn-row" data-aos="zoom-in" data-aos-delay="700">
+                    <a href="./Sairam_Namani_CV.pdf" download class="main-btn">Download Resume</a>
+                </div>
+            </div>
+
+            <div class="img-box" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="blob"></div>
+                <img src="main.png" alt="Sairam Namani Profile">
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Mouse Glow
+        const glow = document.getElementById('glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Background Particles
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i=0; i<80; i++) particles.push({
+                x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+                s: Math.random()*2, vx: Math.random()*0.4-0.2, vy: Math.random()*0.4-0.2
+            });
+        }
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle = 'rgba(76, 175, 80, 0.2)';
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x<0 || p.x>canvas.width) p.vx *= -1;
+                if(p.y<0 || p.y>canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, Math.PI*2); ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize', init);
+        init(); draw();
+    </script>
+</body>
+</html>
